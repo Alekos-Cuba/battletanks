@@ -1,0 +1,38 @@
+.buttonWrapper {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.buttonWrapper::before {
+  transition: 0.3s;
+  transform: scale(0.9);
+}
+
+.buttonWrapper:hover {
+  color: #10ff1c;
+  box-shadow: 0 0 5px #10ff1c;
+  text-shadow: 0 0 5px #10ff1c;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.buttonWrapper:hover::before {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #10ff1c;
+}
+
+.vsAI-image {
+  width: 100px;
+  height: 100px;
+  background-image: url("./../resources/aivshuman.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
