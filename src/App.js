@@ -1,15 +1,20 @@
 import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Body from "./components/Body";
+import MainMenu from "./components/MainMenu";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="app">
-      <Header></Header>
-      <Body></Body>
-      <Footer></Footer>
-    </div>
+    <Router>
+      <div className="app">
+        <Header></Header>
+        <Switch>
+          <Route path="/" exact component={MainMenu}></Route>
+        </Switch>
+        <Footer></Footer>
+      </div>
+    </Router>
   );
 }
 
