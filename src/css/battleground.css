@@ -1,0 +1,42 @@
+.battleground {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80%;
+}
+
+.bg-board-container {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.bg-board {
+  background-image: url("./../resources/grass.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+}
+
+.bg-board-tiles-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bg-top-options {
+  height: 50px;
+}
+
+.bg-bottom-options {
+  position: relative;
+  bottom: 0px;
+  height: 50px;
+}

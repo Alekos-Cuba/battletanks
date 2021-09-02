@@ -1,0 +1,64 @@
+.tile-selectable {
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  width: 70px;
+  height: 70px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.tile-selectable::before {
+  transition: 0.3s;
+  transform: scale(0.9);
+}
+
+.tile-selectable:hover {
+  color: #10ff1c;
+  box-shadow: 0 0 5px #10ff1c;
+  text-shadow: 0 0 5px #10ff1c;
+  cursor: pointer;
+}
+
+.tile-selectable:hover::before {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #10ff1c;
+}
+
+.tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  width: 70px;
+  height: 70px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.tile-hidden {
+  display: none;
+}
+
+.tile-image {
+  width: 50px;
+  height: 50px;
+}
+
+.tile-player-unit {
+  background-image: url("./../resources/playerTank.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.tile-ai-unit {
+  background-image: url("./../resources/aiTank.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
