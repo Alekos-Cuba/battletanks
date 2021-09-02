@@ -1,5 +1,6 @@
 import "./../css/battleground.css";
 import Tile from "./Tile";
+import ClickableTile from "./ClickableTile";
 import gameManager from "../scripts/GameManager";
 
 function Battleground() {
@@ -8,24 +9,28 @@ function Battleground() {
     const fullTiles = [];
     let sourceUnits =
       unitType === gameManager.unitTypes.AI
-        ? gameManager.aiUnitsDistribution
-        : gameManager.playerUnitsDistribution;
+        ? gameManager.aiUnits
+        : gameManager.playerUnits;
 
     for (let i = 0; i < gameManager.boardSizeY; i++) {
       tilesRow = [];
       for (let j = 0; j < gameManager.boardSizeX; j++) {
-        tilesRow.push(
-          <Tile
-            key={`${i}_${j}`}
-            selectable={unitType === gameManager.unitTypes.AI}
-            hasUnit={
-              unitType === gameManager.unitTypes.Player &&
-              sourceUnits.has(`${i},${j}`)
-            }
-            unitType={unitType}
-            coords={[i, j]}
-          ></Tile>
-        );
+        if (unitType === gameManager.unitTypes.AI) {
+          tilesRow.push(
+            <ClickableTile key={`${i}_${j}`} coords={[i, j]}></ClickableTile>
+          );
+        } else {
+          tilesRow.push(
+            <Tile
+              key={`${i}_${j}`}
+              hasUnit={
+                unitType === gameManager.unitTypes.Player &&
+                sourceUnits.has(`${i},${j}`)
+              }
+              coords={[i, j]}
+            ></Tile>
+          );
+        }
       }
       fullTiles.push(
         <div key={`row${i}`} className="bg-board-tiles-container">

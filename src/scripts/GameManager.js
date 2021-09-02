@@ -3,8 +3,8 @@ class GameManager {
     this.boardSizeX = 8;
     this.boardSizeY = 7;
     this.maxUnitCount = 25;
-    this.playerUnitsDistribution = this.getRandomUnitDistribution();
-    this.aiUnitsDistribution = this.getRandomUnitDistribution();
+    this.playerUnits = this.getRandomUnitDistribution();
+    this.aiUnits = this.getRandomUnitDistribution();
     this.unitTypes = {
       Player: 0,
       AI: 1,
