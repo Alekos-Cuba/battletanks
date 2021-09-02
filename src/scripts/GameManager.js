@@ -37,8 +37,12 @@ class GameManager {
         count--;
       }
     }
-
     return unitsMap;
+  }
+
+  hasUnitAtCoordinates(coords, unitSource) {
+    let stringCoords = coords.join(",");
+    return unitSource.has(stringCoords);
   }
 }
 
