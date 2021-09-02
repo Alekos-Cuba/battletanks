@@ -4,7 +4,7 @@ import MenuButton from "./MenuButton";
 function MainMenu() {
   return (
     <div className="body-container">
-      <MenuButton title="Play vs Human" goto=""></MenuButton>
+      <MenuButton title="Play vs Human" goto="" icon="vsHuman"></MenuButton>
       <MenuButton
         title="Play vs AI"
         goto="singlePlayerGame"

@@ -36,3 +36,11 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+.vsHuman-image {
+  width: 100px;
+  height: 100px;
+  background-image: url("./../resources/humanvshuman.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}

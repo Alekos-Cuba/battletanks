@@ -18,15 +18,15 @@
 }
 
 .tile-selectable:hover {
-  color: #10ff1c;
-  box-shadow: 0 0 5px #10ff1c;
-  text-shadow: 0 0 5px #10ff1c;
+  color: #e90202;
+  box-shadow: 0 0 5px #e90202;
+  text-shadow: 0 0 5px #e90202;
   cursor: pointer;
 }
 
 .tile-selectable:hover::before {
   transform: scale(1.1);
-  box-shadow: 0 0 15px #10ff1c;
+  box-shadow: 0 0 15px #e90202;
 }
 
 .tile {
