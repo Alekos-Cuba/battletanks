@@ -13,20 +13,22 @@
 }
 
 .tile-selectable::before {
-  transition: 0.3s;
+  transition: 0.5s;
   transform: scale(0.9);
 }
 
 .tile-selectable:hover {
-  color: #e90202;
-  box-shadow: 0 0 5px #e90202;
-  text-shadow: 0 0 5px #e90202;
+  color: #38e902;
+  box-shadow: 0 0 5px #38e902;
+  text-shadow: 0 0 5px #38e902;
+  transform: scale(1.1);
+  transition: 0.3s;
   cursor: pointer;
 }
 
 .tile-selectable:hover::before {
   transform: scale(1.1);
-  box-shadow: 0 0 15px #e90202;
+  box-shadow: 0 0 15px #38e902;
 }
 
 .tile {
