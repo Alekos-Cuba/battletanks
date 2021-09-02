@@ -3,12 +3,13 @@ import Tile from "./Tile";
 import gameManager from "../scripts/GameManager";
 
 function Battleground() {
-  const createBoard = (isTileSelectable, unitType) => {
+  const createBoard = (unitType) => {
     let tilesRow = [];
     const fullTiles = [];
-    let sourceUnits = isTileSelectable
-      ? gameManager.aiUnitsDistribution
-      : gameManager.playerUnitsDistribution;
+    let sourceUnits =
+      unitType === gameManager.unitTypes.AI
+        ? gameManager.aiUnitsDistribution
+        : gameManager.playerUnitsDistribution;
 
     for (let i = 0; i < gameManager.boardSizeY; i++) {
       tilesRow = [];
@@ -16,9 +17,13 @@ function Battleground() {
         tilesRow.push(
           <Tile
             key={`${i}_${j}`}
-            selectable={isTileSelectable}
-            hasUnit={sourceUnits.has(`${i},${j}`)}
+            selectable={unitType === gameManager.unitTypes.AI}
+            hasUnit={
+              unitType === gameManager.unitTypes.Player &&
+              sourceUnits.has(`${i},${j}`)
+            }
             unitType={unitType}
+            coords={[i, j]}
           ></Tile>
         );
       }
@@ -35,11 +40,9 @@ function Battleground() {
     <div className="battleground">
       <div className="bg-board-container">
         <div className="bg-board">
-          {createBoard(false, gameManager.unitTypes.Player)}
+          {createBoard(gameManager.unitTypes.Player)}
         </div>
-        <div className="bg-board">
-          {createBoard(true, gameManager.unitTypes.AI)}
-        </div>
+        <div className="bg-board">{createBoard(gameManager.unitTypes.AI)}</div>
       </div>
       <div className="bg-bottom-options">Other</div>
     </div>

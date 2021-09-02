@@ -16,8 +16,19 @@ function Tile(props) {
       : "tile-ai-unit";
   };
 
+  const revealTile = () => {
+    if (props.selectable) {
+      console.log(
+        gameManager.hasUnitAtCoordinates(
+          props.coords,
+          gameManager.aiUnitsDistribution
+        )
+      );
+    }
+  };
+
   return (
-    <div className={getTileClass()}>
+    <div className={getTileClass()} onClick={revealTile}>
       <div className={getTileImageClass()}>
         <div className={`tile-image ${getTileUnitType()}`}></div>
       </div>
