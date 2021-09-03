@@ -37,13 +37,13 @@ class GameManager {
     return unitsMap;
   }
 
-  validateWinCondition() {
+  getWinner() {
     let winner = this.playerTypes.None;
     if (Player.units.size === 0) {
       winner = this.playerTypes.AI;
     }
     if (AI.units.size === 0) {
-      winner = this.playerTypes.Player;
+      winner = this.playerTypes.Human;
     }
     return winner;
   }
