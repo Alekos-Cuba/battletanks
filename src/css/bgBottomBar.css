@@ -18,6 +18,6 @@
 .bottom-bar-mid-panel {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-grow: 1;
 }

@@ -1,0 +1,30 @@
+.optionButton {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 3px;
+  width: 120px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.optionButton::before {
+  transition: 0.3s;
+  transform: scale(0.9);
+}
+
+.optionButton:hover {
+  color: #10ff1c;
+  box-shadow: 0 0 5px #10ff1c;
+  text-shadow: 0 0 5px #10ff1c;
+  cursor: pointer;
+}
+
+.optionButton:hover::before {
+  box-shadow: 0 0 15px #10ff1c;
+}

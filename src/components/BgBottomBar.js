@@ -1,4 +1,5 @@
 import "./../css/bgBottomBar.css";
+import OptionButton from "./OptionButton";
 
 function BgBottomBar(props) {
   const handleQuit = () => {
@@ -15,8 +16,11 @@ function BgBottomBar(props) {
         <h3>Player Units: {props.playerUnits}</h3>
       </div>
       <div className="bottom-bar-mid-panel">
-        <button onClick={handleQuit}>Go back</button>
-        <button onClick={handleRestart}>Restart game</button>
+        <OptionButton text="Back to Menu" clickFnc={handleQuit}></OptionButton>
+        <OptionButton
+          text="Restart game"
+          clickFnc={handleRestart}
+        ></OptionButton>
       </div>
       <div className="bottom-bar-side-panel">
         <h3>AI Units: {props.aiUnits}</h3>
