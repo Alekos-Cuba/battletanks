@@ -19,26 +19,13 @@ function Battleground() {
     if (unitWasHit) {
       setAiUnitCount(AI.units.size);
     }
+    gameManager.makeAiPlay();
+    setPlayerUnitCount(Player.units.size);
     let winner = gameManager.getWinner();
-    if (winner === gameManager.playerTypes.Human) {
-      alert("Human has won");
-    } else {
-      makeAiPlay();
-    }
-  };
-
-  const makeAiPlay = () => {
-    let fireCoords = AI.requestFireCoordinates(
-      gameManager.boardSizeX,
-      gameManager.boardSizeY
-    );
-    if (Player.hasUnitAtCoordinates(fireCoords)) {
-      Player.destroyUnit(fireCoords);
-      setPlayerUnitCount(Player.units.size);
-      let winner = gameManager.getWinner();
-      if (winner === gameManager.playerTypes.AI) {
+    if (winner === gameManager.playerTypes.AI) {
+      setTimeout(function () {
         alert("AI has won");
-      }
+      }, 500);
     }
   };
 

@@ -1,3 +1,4 @@
+import { func } from "prop-types";
 import AI from "./AI";
 import Player from "./Player";
 
@@ -46,6 +47,22 @@ class GameManager {
       winner = this.playerTypes.Human;
     }
     return winner;
+  }
+
+  makeAiPlay() {
+    if (this.getWinner() === gameManager.playerTypes.Human) {
+      setTimeout(function () {
+        alert("Human has won");
+      }, 500);
+    } else {
+      let fireCoords = AI.requestFireCoordinates(
+        gameManager.boardSizeX,
+        gameManager.boardSizeY
+      );
+      if (Player.hasUnitAtCoordinates(fireCoords)) {
+        Player.destroyUnit(fireCoords);
+      }
+    }
   }
 }
 
