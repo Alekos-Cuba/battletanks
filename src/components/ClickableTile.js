@@ -1,6 +1,5 @@
 import "./../css/clickableTile.css";
 import { useState } from "react";
-import gameManager from "../scripts/GameManager";
 import AI from "../scripts/AI";
 
 function ClickableTile(props) {
@@ -9,19 +8,15 @@ function ClickableTile(props) {
 
   const handleClick = () => {
     setTileClicked(true);
-    let winner = gameManager.playerTypes.None;
+    let unitWasHit = false;
     if (AI.hasUnitAtCoordinates(props.coords)) {
       setTileHasUnit(true);
       AI.destroyUnit(props.coords);
-      winner = gameManager.validateWinCondition();
-      props.onUnitDestroyed(winner);
+      unitWasHit = true;
     } else {
       setTileHasUnit(false);
     }
-
-    if (winner === gameManager.playerTypes.None) {
-      AI.play();
-    }
+    props.onTileClicked(unitWasHit);
   };
 
   return (
