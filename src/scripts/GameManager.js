@@ -44,6 +44,11 @@ class GameManager {
     let stringCoords = coords.join(",");
     return unitSource.has(stringCoords);
   }
+
+  destroyUnit(coords, unitSource) {
+    let stringCoords = coords.join(",");
+    unitSource.delete(stringCoords);
+  }
 }
 
 const gameManager = new GameManager();
