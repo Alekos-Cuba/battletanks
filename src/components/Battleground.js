@@ -1,6 +1,7 @@
 import "./../css/battleground.css";
 import Tile from "./Tile";
 import ClickableTile from "./ClickableTile";
+import BgBottomBar from "./BgBottomBar";
 import gameManager from "../scripts/GameManager";
 
 function Battleground() {
@@ -49,7 +50,9 @@ function Battleground() {
         </div>
         <div className="bg-board">{createBoard(gameManager.unitTypes.AI)}</div>
       </div>
-      <div className="bg-bottom-options">Other</div>
+      <div className="bg-bottom-options">
+        <BgBottomBar></BgBottomBar>
+      </div>
     </div>
   );
 }
