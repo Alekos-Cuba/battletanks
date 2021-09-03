@@ -30,8 +30,8 @@ class GameManager {
     let unitsMap = new Map();
     while (count > 0) {
       let matrixIndex = `${parseInt(
-        Math.random().toFixed(1) * (this.boardSizeX - 1)
-      )},${parseInt(Math.random().toFixed(1) * (this.boardSizeY - 1))}`;
+        Math.random().toFixed(1) * (this.boardSizeY - 1)
+      )},${parseInt(Math.random().toFixed(1) * (this.boardSizeX - 1))}`;
       if (!unitsMap.has(matrixIndex)) {
         unitsMap.set(matrixIndex, true);
         count--;
