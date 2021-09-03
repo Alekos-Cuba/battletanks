@@ -10,6 +10,7 @@ function ClickableTile(props) {
     setTileClicked(true);
     if (gameManager.hasUnitAtCoordinates(props.coords, gameManager.aiUnits)) {
       setTileHasUnit(true);
+      gameManager.destroyUnit(props.coords, gameManager.aiUnits);
     } else {
       setTileHasUnit(false);
     }
