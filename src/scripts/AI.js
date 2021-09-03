@@ -1,6 +1,7 @@
 class AIPlayer {
   constructor() {
     this.units = new Map();
+    this.shots = new Map();
     if (AIPlayer.instance === null) {
       AIPlayer.instance = this;
     }
@@ -21,7 +22,18 @@ class AIPlayer {
     return this.units.has(stringCoords);
   }
 
-  play() {}
+  //must improve this method (maybe using memoization)
+  requestFireCoordinates(boardSizeX, boardSizeY) {
+    let fireCoords = `${parseInt(
+      Math.random().toFixed(1) * (boardSizeY - 1)
+    )},${parseInt(Math.random().toFixed(1) * (boardSizeX - 1))}`;
+    if (!this.shots.has(fireCoords)) {
+      this.shots.set(fireCoords, true);
+      return fireCoords.split(",");
+    } else {
+      return this.requestFireCoordinates(boardSizeX, boardSizeY);
+    }
+  }
 }
 
 const AI = new AIPlayer();
