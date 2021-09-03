@@ -2,6 +2,7 @@ class AIPlayer {
   constructor() {
     this.units = new Map();
     this.shots = new Map();
+    this.shotsFired = new Set();
     if (AIPlayer.instance === null) {
       AIPlayer.instance = this;
     }
@@ -27,12 +28,17 @@ class AIPlayer {
     let fireCoords = `${parseInt(
       Math.random().toFixed(1) * (boardSizeY - 1)
     )},${parseInt(Math.random().toFixed(1) * (boardSizeX - 1))}`;
-    if (!this.shots.has(fireCoords)) {
-      this.shots.set(fireCoords, true);
+    if (!this.shotsFired.has(fireCoords)) {
+      this.shotsFired.add(fireCoords);
       return fireCoords.split(",");
     } else {
       return this.requestFireCoordinates(boardSizeX, boardSizeY);
     }
+  }
+
+  shotHitTarget(coords, targetHit) {
+    console.log(`Fired at: ${coords} hit: ${targetHit}`);
+    this.shots.set(coords, targetHit);
   }
 }
 
