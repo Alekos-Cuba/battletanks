@@ -6,6 +6,7 @@ class GameManager {
     this.playerUnits = this.getRandomUnitDistribution();
     this.aiUnits = this.getRandomUnitDistribution();
     this.unitTypes = {
+      None: -1,
       Player: 0,
       AI: 1,
     };
@@ -48,6 +49,19 @@ class GameManager {
   destroyUnit(coords, unitSource) {
     let stringCoords = coords.join(",");
     unitSource.delete(stringCoords);
+    return this.validateWinCondition();
+  }
+
+  validateWinCondition() {
+    let winner = this.unitTypes.None;
+    if (this.playerUnits.size === 0) {
+      winner = this.unitTypes.AI;
+    }
+    if (this.aiUnits.size === 0) {
+      winner = this.unitTypes.Player;
+    }
+
+    return winner;
   }
 }
 
