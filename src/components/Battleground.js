@@ -32,8 +32,6 @@ function Battleground() {
   const createBoard = (unitType) => {
     let tilesRow = [];
     const fullTiles = [];
-    let sourceUnits =
-      unitType === gameManager.playerTypes.AI ? AI.units : Player.units;
     for (let i = 0; i < gameManager.boardSizeY; i++) {
       tilesRow = [];
       for (let j = 0; j < gameManager.boardSizeX; j++) {
@@ -49,7 +47,7 @@ function Battleground() {
           tilesRow.push(
             <Tile
               key={`${i}_${j}`}
-              hasUnit={sourceUnits.has(`${i},${j}`)}
+              hasUnit={Player.units.has(`${i},${j}`)}
               coords={[i, j]}
             ></Tile>
           );
