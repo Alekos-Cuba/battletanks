@@ -1,4 +1,3 @@
-import { func } from "prop-types";
 import AI from "./AI";
 import Player from "./Player";
 
@@ -31,7 +30,7 @@ class GameManager {
         Math.random().toFixed(1) * (this.boardSizeY - 1)
       )},${parseInt(Math.random().toFixed(1) * (this.boardSizeX - 1))}`;
       if (!unitsMap.has(matrixIndex)) {
-        unitsMap.set(matrixIndex, true);
+        unitsMap.set(matrixIndex, false);
         count--;
       }
     }
@@ -60,7 +59,10 @@ class GameManager {
         gameManager.boardSizeY
       );
       if (Player.hasUnitAtCoordinates(fireCoords)) {
+        AI.shotHitTarget(fireCoords, true);
         Player.destroyUnit(fireCoords);
+      } else {
+        AI.shotHitTarget(fireCoords, false);
       }
     }
   }
