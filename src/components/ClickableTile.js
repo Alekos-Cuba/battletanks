@@ -11,6 +11,7 @@ function ClickableTile(props) {
     if (gameManager.hasUnitAtCoordinates(props.coords, gameManager.aiUnits)) {
       setTileHasUnit(true);
       gameManager.destroyUnit(props.coords, gameManager.aiUnits);
+      props.onUnitDestroyed();
     } else {
       setTileHasUnit(false);
     }

@@ -1,16 +1,6 @@
 import "./../css/bgBottomBar.css";
-import { useState, useEffect } from "react";
-import gameManager from "../scripts/GameManager";
 
-function BgBottomBar() {
-  const [playerUnitCount, setPlayerUnitCount] = useState(0);
-  const [aiUnitCount, setAiUnitCount] = useState(0);
-
-  useEffect(() => {
-    setPlayerUnitCount(gameManager.playerUnits.size);
-    setAiUnitCount(gameManager.aiUnits.size);
-  }, []);
-
+function BgBottomBar(props) {
   const handleQuit = () => {
     window.location = "/";
   };
@@ -22,14 +12,14 @@ function BgBottomBar() {
   return (
     <div className="bottom-bar">
       <div className="bottom-bar-side-panel">
-        <h3>Player Units: {playerUnitCount}</h3>
+        <h3>Player Units: {0}</h3>
       </div>
       <div className="bottom-bar-mid-panel">
         <button onClick={handleQuit}>Go back</button>
         <button onClick={handleRestart}>Restart game</button>
       </div>
       <div className="bottom-bar-side-panel">
-        <h3>AI Units: {aiUnitCount}</h3>
+        <h3>AI Units: {props.aiUnits}</h3>
       </div>
     </div>
   );

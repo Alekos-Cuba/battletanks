@@ -1,10 +1,22 @@
 import "./../css/battleground.css";
+import { useState, useEffect } from "react";
 import Tile from "./Tile";
 import ClickableTile from "./ClickableTile";
 import BgBottomBar from "./BgBottomBar";
 import gameManager from "../scripts/GameManager";
 
 function Battleground() {
+  const [playerUnitCount, setPlayerUnitCount] = useState(0);
+  const [aiUnitCount, setAiUnitCount] = useState(0);
+  useEffect(() => {
+    setPlayerUnitCount(gameManager.playerUnits.size);
+    setAiUnitCount(gameManager.aiUnits.size);
+  }, []);
+
+  const onAiUnitDestroyed = () => {
+    setAiUnitCount(aiUnitCount - 1);
+  };
+
   const createBoard = (unitType) => {
     let tilesRow = [];
     const fullTiles = [];
@@ -18,7 +30,11 @@ function Battleground() {
       for (let j = 0; j < gameManager.boardSizeX; j++) {
         if (unitType === gameManager.unitTypes.AI) {
           tilesRow.push(
-            <ClickableTile key={`${i}_${j}`} coords={[i, j]}></ClickableTile>
+            <ClickableTile
+              key={`${i}_${j}`}
+              coords={[i, j]}
+              onUnitDestroyed={onAiUnitDestroyed}
+            ></ClickableTile>
           );
         } else {
           tilesRow.push(
@@ -51,7 +67,7 @@ function Battleground() {
         <div className="bg-board">{createBoard(gameManager.unitTypes.AI)}</div>
       </div>
       <div className="bg-bottom-options">
-        <BgBottomBar></BgBottomBar>
+        <BgBottomBar aiUnits={aiUnitCount}></BgBottomBar>
       </div>
     </div>
   );
