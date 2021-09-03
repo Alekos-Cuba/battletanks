@@ -4,31 +4,33 @@ import Tile from "./Tile";
 import ClickableTile from "./ClickableTile";
 import BgBottomBar from "./BgBottomBar";
 import gameManager from "../scripts/GameManager";
+import AI from "../scripts/AI";
+import Player from "../scripts/Player";
 
 function Battleground() {
   const [playerUnitCount, setPlayerUnitCount] = useState(0);
   const [aiUnitCount, setAiUnitCount] = useState(0);
   useEffect(() => {
-    setPlayerUnitCount(gameManager.playerUnits.size);
-    setAiUnitCount(gameManager.aiUnits.size);
+    setPlayerUnitCount(Player.units.size);
+    setAiUnitCount(AI.units.size);
   }, []);
 
-  const onAiUnitDestroyed = () => {
+  const onAiUnitDestroyed = (winner) => {
     setAiUnitCount(aiUnitCount - 1);
+    if (winner !== gameManager.playerTypes.None) {
+      console.log("We have a winner");
+    }
   };
 
   const createBoard = (unitType) => {
     let tilesRow = [];
     const fullTiles = [];
     let sourceUnits =
-      unitType === gameManager.unitTypes.AI
-        ? gameManager.aiUnits
-        : gameManager.playerUnits;
-
+      unitType === gameManager.playerTypes.AI ? AI.units : Player.units;
     for (let i = 0; i < gameManager.boardSizeY; i++) {
       tilesRow = [];
       for (let j = 0; j < gameManager.boardSizeX; j++) {
-        if (unitType === gameManager.unitTypes.AI) {
+        if (unitType === gameManager.playerTypes.AI) {
           tilesRow.push(
             <ClickableTile
               key={`${i}_${j}`}
@@ -59,12 +61,17 @@ function Battleground() {
     <div className="battleground">
       <div className="bg-board-container">
         <div className="bg-board">
-          {createBoard(gameManager.unitTypes.Player)}
+          {createBoard(gameManager.playerTypes.Human)}
         </div>
-        <div className="bg-board">{createBoard(gameManager.unitTypes.AI)}</div>
+        <div className="bg-board">
+          {createBoard(gameManager.playerTypes.AI)}
+        </div>
       </div>
       <div className="bg-bottom-options">
-        <BgBottomBar aiUnits={aiUnitCount}></BgBottomBar>
+        <BgBottomBar
+          aiUnits={aiUnitCount}
+          playerUnits={playerUnitCount}
+        ></BgBottomBar>
       </div>
     </div>
   );

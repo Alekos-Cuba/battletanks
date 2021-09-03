@@ -1,6 +1,7 @@
 import "./../css/clickableTile.css";
 import { useState } from "react";
 import gameManager from "../scripts/GameManager";
+import AI from "../scripts/AI";
 
 function ClickableTile(props) {
   const [tileClicked, setTileClicked] = useState(false);
@@ -8,12 +9,18 @@ function ClickableTile(props) {
 
   const handleClick = () => {
     setTileClicked(true);
-    if (gameManager.hasUnitAtCoordinates(props.coords, gameManager.aiUnits)) {
+    let winner = gameManager.playerTypes.None;
+    if (AI.hasUnitAtCoordinates(props.coords)) {
       setTileHasUnit(true);
-      let winner = gameManager.destroyUnit(props.coords, gameManager.aiUnits);
+      AI.destroyUnit(props.coords);
+      winner = gameManager.validateWinCondition();
       props.onUnitDestroyed(winner);
     } else {
       setTileHasUnit(false);
+    }
+
+    if (winner === gameManager.playerTypes.None) {
+      AI.play();
     }
   };
 

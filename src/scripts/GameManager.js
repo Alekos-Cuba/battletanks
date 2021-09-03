@@ -1,29 +1,25 @@
+import AI from "./AI";
+import Player from "./Player";
+
 class GameManager {
   constructor() {
     this.boardSizeX = 8;
     this.boardSizeY = 7;
     this.maxUnitCount = 25;
-    this.playerUnits = this.getRandomUnitDistribution();
-    this.aiUnits = this.getRandomUnitDistribution();
-    this.unitTypes = {
+    this.playerTypes = {
       None: -1,
-      Player: 0,
+      Human: 0,
       AI: 1,
     };
-    this.stages = {
-      setupStage: 0,
-      playerTurn: 1,
-      aiTurn: 2,
-    };
-    this.currentStage = this.stages.setupStage;
     if (GameManager.instance === null) {
       GameManager.instance = this;
     }
     return GameManager.instance;
   }
 
-  getCurrentStage() {
-    return this.currentStage;
+  initializeGame() {
+    AI.setUnits(this.getRandomUnitDistribution());
+    Player.setUnits(this.getRandomUnitDistribution());
   }
 
   getRandomUnitDistribution() {
@@ -41,30 +37,19 @@ class GameManager {
     return unitsMap;
   }
 
-  hasUnitAtCoordinates(coords, unitSource) {
-    let stringCoords = coords.join(",");
-    return unitSource.has(stringCoords);
-  }
-
-  destroyUnit(coords, unitSource) {
-    let stringCoords = coords.join(",");
-    unitSource.delete(stringCoords);
-    return this.validateWinCondition();
-  }
-
   validateWinCondition() {
-    let winner = this.unitTypes.None;
-    if (this.playerUnits.size === 0) {
-      winner = this.unitTypes.AI;
+    let winner = this.playerTypes.None;
+    if (Player.units.size === 0) {
+      winner = this.playerTypes.AI;
     }
-    if (this.aiUnits.size === 0) {
-      winner = this.unitTypes.Player;
+    if (AI.units.size === 0) {
+      winner = this.playerTypes.Player;
     }
-
     return winner;
   }
 }
 
 const gameManager = new GameManager();
+gameManager.initializeGame();
 Object.freeze(gameManager);
 export default gameManager;
