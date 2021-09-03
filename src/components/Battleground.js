@@ -40,10 +40,7 @@ function Battleground() {
           tilesRow.push(
             <Tile
               key={`${i}_${j}`}
-              hasUnit={
-                unitType === gameManager.unitTypes.Player &&
-                sourceUnits.has(`${i},${j}`)
-              }
+              hasUnit={sourceUnits.has(`${i},${j}`)}
               coords={[i, j]}
             ></Tile>
           );
