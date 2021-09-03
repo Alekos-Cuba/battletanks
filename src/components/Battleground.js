@@ -15,10 +15,30 @@ function Battleground() {
     setAiUnitCount(AI.units.size);
   }, []);
 
-  const onAiUnitDestroyed = (winner) => {
-    setAiUnitCount(aiUnitCount - 1);
-    if (winner !== gameManager.playerTypes.None) {
-      console.log("We have a winner");
+  const tileClicked = (unitWasHit) => {
+    if (unitWasHit) {
+      setAiUnitCount(AI.units.size);
+    }
+    let winner = gameManager.getWinner();
+    if (winner === gameManager.playerTypes.Human) {
+      alert("Human has won");
+    } else {
+      makeAiPlay();
+    }
+  };
+
+  const makeAiPlay = () => {
+    let fireCoords = AI.requestFireCoordinates(
+      gameManager.boardSizeX,
+      gameManager.boardSizeY
+    );
+    if (Player.hasUnitAtCoordinates(fireCoords)) {
+      Player.destroyUnit(fireCoords);
+      setPlayerUnitCount(Player.units.size);
+      let winner = gameManager.getWinner();
+      if (winner === gameManager.playerTypes.AI) {
+        alert("AI has won");
+      }
     }
   };
 
@@ -35,7 +55,7 @@ function Battleground() {
             <ClickableTile
               key={`${i}_${j}`}
               coords={[i, j]}
-              onUnitDestroyed={onAiUnitDestroyed}
+              onTileClicked={tileClicked}
             ></ClickableTile>
           );
         } else {
