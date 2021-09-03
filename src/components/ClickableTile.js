@@ -7,6 +7,9 @@ function ClickableTile(props) {
   const [tileHasUnit, setTileHasUnit] = useState(false);
 
   const handleClick = () => {
+    if (tileClicked) {
+      return;
+    }
     setTileClicked(true);
     let unitWasHit = false;
     if (AI.hasUnitAtCoordinates(props.coords)) {
