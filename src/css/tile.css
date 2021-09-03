@@ -11,8 +11,36 @@
   margin-right: 2px;
 }
 
+.tile-unit-miss {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  width: 70px;
+  height: 70px;
+  background-image: url("./../resources/miss.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
 .tile-player-unit {
   background-image: url("./../resources/playerTank.png");
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.tile-player-unit-destroyed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  width: 70px;
+  height: 70px;
+  background-image: url("./../resources/playerTankDestroyed.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-left: 2px;
+  margin-right: 2px;
 }
