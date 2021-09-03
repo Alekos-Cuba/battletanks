@@ -12,7 +12,7 @@ function BgBottomBar(props) {
   return (
     <div className="bottom-bar">
       <div className="bottom-bar-side-panel">
-        <h3>Player Units: {0}</h3>
+        <h3>Player Units: {props.playerUnits}</h3>
       </div>
       <div className="bottom-bar-mid-panel">
         <button onClick={handleQuit}>Go back</button>
