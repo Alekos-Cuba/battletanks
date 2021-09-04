@@ -2,11 +2,7 @@ import "./../css/bgBottomBar.css";
 import OptionButton from "./OptionButton";
 
 function BgBottomBar(props) {
-  const handleQuit = () => {
-    window.location = "/";
-  };
-
-  const handleRestart = () => {
+  const restartGame = () => {
     window.location.reload();
   };
 
@@ -16,10 +12,11 @@ function BgBottomBar(props) {
         <h3>Player Units: {props.playerUnits}</h3>
       </div>
       <div className="bottom-bar-mid-panel">
-        <OptionButton text="Back to Menu" clickFnc={handleQuit}></OptionButton>
+        <OptionButton text="Back to Menu" goto="/"></OptionButton>
         <OptionButton
           text="Restart game"
-          clickFnc={handleRestart}
+          clickFnc={restartGame}
+          goto="game"
         ></OptionButton>
       </div>
       <div className="bottom-bar-side-panel">

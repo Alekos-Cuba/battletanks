@@ -8,6 +8,10 @@ class HumanPlayer extends Player {
     }
     return HumanPlayer.instance;
   }
+
+  resetShots() {
+    this.shots = new Map();
+  }
 }
 
 const Human = new HumanPlayer();

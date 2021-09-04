@@ -12,7 +12,7 @@ function App() {
         <Header></Header>
         <Switch>
           <Route path="/" exact component={MainMenu}></Route>
-          <Route path="/singlePlayerGame" component={Battleground}></Route>
+          <Route path="/game" component={Battleground}></Route>
         </Switch>
         <Footer></Footer>
       </div>

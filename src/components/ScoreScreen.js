@@ -12,9 +12,16 @@ function ScoreScreen() {
         return "You win!";
       }
       case gameManager.playerTypes.AI: {
-        return "You have been defeated";
+        return "You have been defeated!";
+      }
+      default: {
+        break;
       }
     }
+  };
+
+  const restartGame = () => {
+    window.location.reload();
   };
 
   return (
@@ -44,8 +51,12 @@ function ScoreScreen() {
           </div>
         </div>
         <div className="score-buttons-container">
-          <OptionButton text="Back to Menu"></OptionButton>
-          <OptionButton text="Play again"></OptionButton>
+          <OptionButton text="Back to Menu" goto="/"></OptionButton>
+          <OptionButton
+            text="Play again"
+            clickFnc={restartGame}
+            goto="game"
+          ></OptionButton>
         </div>
       </div>
     </div>

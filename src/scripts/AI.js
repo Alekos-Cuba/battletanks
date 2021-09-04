@@ -10,6 +10,11 @@ class AIPlayer extends Player {
     return AIPlayer.instance;
   }
 
+  resetShots() {
+    this.shotsFired = new Set();
+    this.shots = new Map();
+  }
+
   //must improve this method (maybe using memoization)
   requestFireCoordinates(boardSizeX, boardSizeY) {
     let fireCoords = `${parseInt(

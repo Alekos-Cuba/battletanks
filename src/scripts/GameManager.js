@@ -18,7 +18,9 @@ class GameManager {
   }
 
   initializeGame() {
+    AI.resetShots();
     AI.setUnits(this.getRandomUnitDistribution());
+    Human.resetShots();
     Human.setUnits(this.getRandomUnitDistribution());
   }
 
@@ -63,6 +65,5 @@ class GameManager {
 }
 
 const gameManager = new GameManager();
-gameManager.initializeGame();
 Object.freeze(gameManager);
 export default gameManager;

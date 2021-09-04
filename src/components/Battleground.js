@@ -13,6 +13,7 @@ function Battleground() {
   const [aiUnitCount, setAiUnitCount] = useState(0);
   const [showScore, setShowScore] = useState(false);
   useEffect(() => {
+    gameManager.initializeGame();
     setPlayerUnitCount(Human.units.size);
     setAiUnitCount(AI.units.size);
   }, []);
