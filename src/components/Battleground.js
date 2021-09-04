@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import "./../css/battleground.css";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Tile from "./Tile";
 import ClickableTile from "./ClickableTile";
 import BgBottomBar from "./BgBottomBar";
@@ -12,10 +13,13 @@ function Battleground() {
   const [playerUnitCount, setPlayerUnitCount] = useState(0);
   const [aiUnitCount, setAiUnitCount] = useState(0);
   const [showScore, setShowScore] = useState(false);
+  let playerTiles = new Map();
+
   useEffect(() => {
     gameManager.initializeGame();
     setPlayerUnitCount(Human.units.size);
     setAiUnitCount(AI.units.size);
+    setPlayerUnitsOnBoard();
   }, []);
 
   const tileClicked = (unitWasHit) => {
@@ -24,8 +28,13 @@ function Battleground() {
     }
     //check win condition after human has played
     checkWinCondition();
-    gameManager.makeAiPlay();
+    let aiShot = gameManager.makeAiPlay();
     setPlayerUnitCount(Human.units.size);
+    //if AI hit a player unit, change the tile class
+    let hitTile = playerTiles.get(aiShot[0].join(",")).current;
+    aiShot[1] === true
+      ? hitTile.classList.toggle("tile-player-unit-destroyed")
+      : hitTile.classList.toggle("tile-unit-miss");
     //check win condition again after AI has played
     checkWinCondition();
   };
@@ -36,6 +45,18 @@ function Battleground() {
       setTimeout(function () {
         setShowScore(true);
       }, 500);
+    }
+  };
+
+  const setPlayerUnitsOnBoard = () => {
+    for (let i = 0; i < gameManager.boardSizeY; i++) {
+      for (let j = 0; j < gameManager.boardSizeX; j++) {
+        if (Human.hasUnitAtCoordinates([i, j])) {
+          playerTiles
+            .get(`${i},${j}`)
+            .current.classList.toggle("tile-player-unit");
+        }
+      }
     }
   };
 
@@ -54,13 +75,11 @@ function Battleground() {
             ></ClickableTile>
           );
         } else {
+          const ref = React.createRef();
           tilesRow.push(
-            <Tile
-              key={`${i}_${j}`}
-              hasUnit={Human.units.has(`${i},${j}`)}
-              coords={[i, j]}
-            ></Tile>
+            <Tile key={`${i}_${j}`} ref={ref} coords={[i, j]}></Tile>
           );
+          playerTiles.set(`${i},${j}`, ref);
         }
       }
       fullTiles.push(

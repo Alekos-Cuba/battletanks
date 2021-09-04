@@ -51,6 +51,7 @@ class GameManager {
   }
 
   makeAiPlay() {
+    let hit;
     let fireCoords = AI.requestFireCoordinates(
       gameManager.boardSizeX,
       gameManager.boardSizeY
@@ -58,9 +59,12 @@ class GameManager {
     if (Human.hasUnitAtCoordinates(fireCoords)) {
       AI.shotHitTarget(fireCoords, true);
       Human.destroyUnit(fireCoords);
+      hit = true;
     } else {
       AI.shotHitTarget(fireCoords, false);
+      hit = false;
     }
+    return [fireCoords, hit];
   }
 }
 
