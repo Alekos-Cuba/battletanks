@@ -1,11 +1,8 @@
 import "./../css/tile.css";
+import React from "react";
 
-function Tile(props) {
-  const getTileClass = () => {
-    return props.hasUnit ? "tile-player-unit" : "";
-  };
-
-  return <div className={`tile ${getTileClass()}`}></div>;
-}
+const Tile = React.forwardRef((props, ref) => {
+  return <div className="tile" ref={ref}></div>;
+});
 
 export default Tile;
