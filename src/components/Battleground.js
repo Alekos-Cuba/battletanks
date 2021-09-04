@@ -6,10 +6,12 @@ import BgBottomBar from "./BgBottomBar";
 import gameManager from "../scripts/GameManager";
 import AI from "../scripts/AI";
 import Player from "../scripts/Player";
+import ScoreScreen from "./ScoreScreen";
 
 function Battleground() {
   const [playerUnitCount, setPlayerUnitCount] = useState(0);
   const [aiUnitCount, setAiUnitCount] = useState(0);
+  const [showScore, setShowScore] = useState(false);
   useEffect(() => {
     setPlayerUnitCount(Player.units.size);
     setAiUnitCount(AI.units.size);
@@ -19,12 +21,19 @@ function Battleground() {
     if (unitWasHit) {
       setAiUnitCount(AI.units.size);
     }
+    //check win condition after human has played
+    checkWinCondition();
     gameManager.makeAiPlay();
     setPlayerUnitCount(Player.units.size);
+    //check win condition again after AI has played
+    checkWinCondition();
+  };
+
+  const checkWinCondition = () => {
     let winner = gameManager.getWinner();
-    if (winner === gameManager.playerTypes.AI) {
+    if (winner !== gameManager.playerTypes.None) {
       setTimeout(function () {
-        alert("AI has won");
+        setShowScore(true);
       }, 500);
     }
   };
@@ -78,6 +87,7 @@ function Battleground() {
           playerUnits={playerUnitCount}
         ></BgBottomBar>
       </div>
+      {showScore ? <ScoreScreen></ScoreScreen> : ""}
     </div>
   );
 }
