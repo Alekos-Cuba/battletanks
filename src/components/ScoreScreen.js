@@ -1,6 +1,6 @@
 import "./../css/scoreScreen.css";
 import gameManager from "../scripts/GameManager";
-import Player from "../scripts/Player";
+import Human from "../scripts/Human";
 import AI from "../scripts/AI";
 import OptionButton from "./OptionButton";
 
@@ -27,9 +27,9 @@ function ScoreScreen() {
           </div>
           <div className="score-resume">
             <div className="score-resume-content-left">
-              <span>{Player.shots.size}</span>
-              <span>{Player.getShotStatistics(true)}</span>
-              <span>{Player.getShotStatistics(false)}</span>
+              <span>{Human.shots.size}</span>
+              <span>{Human.getShotStatistics(true)}</span>
+              <span>{Human.getShotStatistics(false)}</span>
             </div>
             <div className="score-resume-content-topics">
               <span>Shots fired</span>

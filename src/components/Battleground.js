@@ -5,7 +5,7 @@ import ClickableTile from "./ClickableTile";
 import BgBottomBar from "./BgBottomBar";
 import gameManager from "../scripts/GameManager";
 import AI from "../scripts/AI";
-import Player from "../scripts/Player";
+import Human from "../scripts/Human";
 import ScoreScreen from "./ScoreScreen";
 
 function Battleground() {
@@ -13,7 +13,7 @@ function Battleground() {
   const [aiUnitCount, setAiUnitCount] = useState(0);
   const [showScore, setShowScore] = useState(false);
   useEffect(() => {
-    setPlayerUnitCount(Player.units.size);
+    setPlayerUnitCount(Human.units.size);
     setAiUnitCount(AI.units.size);
   }, []);
 
@@ -24,7 +24,7 @@ function Battleground() {
     //check win condition after human has played
     checkWinCondition();
     gameManager.makeAiPlay();
-    setPlayerUnitCount(Player.units.size);
+    setPlayerUnitCount(Human.units.size);
     //check win condition again after AI has played
     checkWinCondition();
   };
@@ -56,7 +56,7 @@ function Battleground() {
           tilesRow.push(
             <Tile
               key={`${i}_${j}`}
-              hasUnit={Player.units.has(`${i},${j}`)}
+              hasUnit={Human.units.has(`${i},${j}`)}
               coords={[i, j]}
             ></Tile>
           );

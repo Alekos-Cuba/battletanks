@@ -1,5 +1,5 @@
 import AI from "./AI";
-import Player from "./Player";
+import Human from "./Human";
 
 class GameManager {
   constructor() {
@@ -19,7 +19,7 @@ class GameManager {
 
   initializeGame() {
     AI.setUnits(this.getRandomUnitDistribution());
-    Player.setUnits(this.getRandomUnitDistribution());
+    Human.setUnits(this.getRandomUnitDistribution());
   }
 
   getRandomUnitDistribution() {
@@ -39,7 +39,7 @@ class GameManager {
 
   getWinner() {
     let winner = this.playerTypes.None;
-    if (Player.units.size === 0) {
+    if (Human.units.size === 0) {
       winner = this.playerTypes.AI;
     }
     if (AI.units.size === 0) {
@@ -53,9 +53,9 @@ class GameManager {
       gameManager.boardSizeX,
       gameManager.boardSizeY
     );
-    if (Player.hasUnitAtCoordinates(fireCoords)) {
+    if (Human.hasUnitAtCoordinates(fireCoords)) {
       AI.shotHitTarget(fireCoords, true);
-      Player.destroyUnit(fireCoords);
+      Human.destroyUnit(fireCoords);
     } else {
       AI.shotHitTarget(fireCoords, false);
     }

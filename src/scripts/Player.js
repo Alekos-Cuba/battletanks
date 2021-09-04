@@ -1,11 +1,7 @@
-class HumanPlayer {
+class Player {
   constructor() {
     this.units = new Map();
     this.shots = new Map();
-    if (HumanPlayer.instance === null) {
-      HumanPlayer.instance = this;
-    }
-    return HumanPlayer.instance;
   }
 
   setUnits(units) {
@@ -22,11 +18,6 @@ class HumanPlayer {
     return this.units.has(stringCoords);
   }
 
-  shotHitTarget(coords, targetHit) {
-    console.log(`Player fired at: ${coords} hit: ${targetHit}`);
-    this.shots.set(coords, targetHit);
-  }
-
   getShotStatistics(isHit) {
     let count = 0;
     for (const value of this.shots.values()) {
@@ -36,7 +27,10 @@ class HumanPlayer {
     }
     return count;
   }
+
+  shotHitTarget(coords, targetHit) {
+    this.shots.set(coords, targetHit);
+  }
 }
 
-const Player = new HumanPlayer();
 export default Player;

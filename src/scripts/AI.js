@@ -1,26 +1,13 @@
-class AIPlayer {
+import Player from "./Player";
+
+class AIPlayer extends Player {
   constructor() {
-    this.units = new Map();
-    this.shots = new Map();
+    super();
     this.shotsFired = new Set();
     if (AIPlayer.instance === null) {
       AIPlayer.instance = this;
     }
     return AIPlayer.instance;
-  }
-
-  setUnits(units) {
-    this.units = units;
-  }
-
-  destroyUnit(coords) {
-    let stringCoords = coords.join(",");
-    this.units.delete(stringCoords);
-  }
-
-  hasUnitAtCoordinates(coords) {
-    let stringCoords = coords.join(",");
-    return this.units.has(stringCoords);
   }
 
   //must improve this method (maybe using memoization)
@@ -34,21 +21,6 @@ class AIPlayer {
     } else {
       return this.requestFireCoordinates(boardSizeX, boardSizeY);
     }
-  }
-
-  shotHitTarget(coords, targetHit) {
-    console.log(`AI fired at: ${coords} hit: ${targetHit}`);
-    this.shots.set(coords, targetHit);
-  }
-
-  getShotStatistics(isHit) {
-    let count = 0;
-    for (const value of this.shots.values()) {
-      if (value === isHit) {
-        count++;
-      }
-    }
-    return count;
   }
 }
 
