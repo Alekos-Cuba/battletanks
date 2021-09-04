@@ -37,10 +37,10 @@
   background-repeat: no-repeat;
 }
 
-.vsHuman-image {
+.howto-image {
   width: 100px;
   height: 100px;
-  background-image: url("./../resources/humanvshuman.png");
+  background-image: url("./../resources/howto.png");
   background-size: cover;
   background-repeat: no-repeat;
 }
