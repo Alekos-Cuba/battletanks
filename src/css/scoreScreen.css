@@ -55,13 +55,48 @@
 }
 
 .content {
-  padding: 10%;
+  padding: 5%;
 }
 
 .score-resume {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   text-align: center;
   color: #ffffff;
 }
-.good-job h1 {
-  font-size: 45px;
+
+.score-resume-content-topics {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 150px;
+}
+
+.score-resume-content-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-grow: 1;
+}
+
+.score-resume-content-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-grow: 1;
+}
+
+.score-content-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.score-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 10px;
 }
