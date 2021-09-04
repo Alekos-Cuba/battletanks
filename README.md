@@ -12,7 +12,6 @@ Any suggestion about how to improve performance or game logic will be appreciate
 
 ### Known issues
 
-I'm still trying to figure out how to make the player's side display the shots' effects just like the AI's side. If you manage to
-make it work, please let me know, or just fix it and send me a merge request. Help is always welcomed!
+- Need to refactor the css styles to make it work on mobiles
 
 Enjoy!
