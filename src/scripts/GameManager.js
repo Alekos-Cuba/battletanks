@@ -49,21 +49,15 @@ class GameManager {
   }
 
   makeAiPlay() {
-    if (this.getWinner() === gameManager.playerTypes.Human) {
-      setTimeout(function () {
-        alert("Human has won");
-      }, 500);
+    let fireCoords = AI.requestFireCoordinates(
+      gameManager.boardSizeX,
+      gameManager.boardSizeY
+    );
+    if (Player.hasUnitAtCoordinates(fireCoords)) {
+      AI.shotHitTarget(fireCoords, true);
+      Player.destroyUnit(fireCoords);
     } else {
-      let fireCoords = AI.requestFireCoordinates(
-        gameManager.boardSizeX,
-        gameManager.boardSizeY
-      );
-      if (Player.hasUnitAtCoordinates(fireCoords)) {
-        AI.shotHitTarget(fireCoords, true);
-        Player.destroyUnit(fireCoords);
-      } else {
-        AI.shotHitTarget(fireCoords, false);
-      }
+      AI.shotHitTarget(fireCoords, false);
     }
   }
 }
