@@ -37,8 +37,18 @@ class AIPlayer {
   }
 
   shotHitTarget(coords, targetHit) {
-    console.log(`Fired at: ${coords} hit: ${targetHit}`);
+    console.log(`AI fired at: ${coords} hit: ${targetHit}`);
     this.shots.set(coords, targetHit);
+  }
+
+  getShotStatistics(isHit) {
+    let count = 0;
+    for (const value of this.shots.values()) {
+      if (value === isHit) {
+        count++;
+      }
+    }
+    return count;
   }
 }
 
