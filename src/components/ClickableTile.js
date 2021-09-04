@@ -1,6 +1,7 @@
 import "./../css/clickableTile.css";
 import { useState } from "react";
 import AI from "../scripts/AI";
+import Player from "../scripts/Player";
 
 function ClickableTile(props) {
   const [tileClicked, setTileClicked] = useState(false);
@@ -15,9 +16,11 @@ function ClickableTile(props) {
     if (AI.hasUnitAtCoordinates(props.coords)) {
       setTileHasUnit(true);
       AI.destroyUnit(props.coords);
+      Player.shotHitTarget(props.coords, true);
       unitWasHit = true;
     } else {
       setTileHasUnit(false);
+      Player.shotHitTarget(props.coords, false);
     }
     props.onTileClicked(unitWasHit);
   };
