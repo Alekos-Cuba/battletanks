@@ -16,28 +16,26 @@
 }
 
 .modal {
-  width: 600px;
-  height: 400px;
+  width: 350px;
+  height: 250px;
   display: block;
   border-radius: 10px;
   margin: 50% 0 0 -300px;
   position: relative;
   top: 50%;
-  left: 50%;
+  left: 70%;
   background: linear-gradient(rgb(0, 0, 0), rgb(26, 38, 60));
   opacity: 0;
   transition: all 0.5s ease-in-out;
 }
 
 .modal-wrapper.open .modal {
-  margin-top: -200px;
+  margin-top: -130px;
   opacity: 1;
 }
 
 .head {
-  width: 90%;
   height: 32px;
-  padding: 12px 30px;
   overflow: hidden;
   background: linear-gradient(rgb(26, 38, 60), rgb(0, 0, 0));
   color: white;

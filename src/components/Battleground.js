@@ -3,11 +3,11 @@ import "./../css/battleground.css";
 import React, { useState, useEffect } from "react";
 import Tile from "./Tile";
 import ClickableTile from "./ClickableTile";
-import BgBottomBar from "./BgBottomBar";
 import gameManager from "../scripts/GameManager";
 import AI from "../scripts/AI";
 import Human from "../scripts/Human";
 import ScoreScreen from "./ScoreScreen";
+import BattlegroundFooter from "./BattlegroundFooter";
 
 function Battleground() {
   const [playerUnitCount, setPlayerUnitCount] = useState(0);
@@ -101,12 +101,10 @@ function Battleground() {
           {createBoard(gameManager.playerTypes.AI)}
         </div>
       </div>
-      <div className="bg-bottom-options">
-        <BgBottomBar
-          aiUnits={aiUnitCount}
-          playerUnits={playerUnitCount}
-        ></BgBottomBar>
-      </div>
+      <BattlegroundFooter
+        aiUnits={aiUnitCount}
+        playerUnits={playerUnitCount}
+      ></BattlegroundFooter>
       {showScore ? <ScoreScreen></ScoreScreen> : ""}
     </div>
   );

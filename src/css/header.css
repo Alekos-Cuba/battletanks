@@ -11,7 +11,7 @@
   justify-content: space-around;
   flex-wrap: wrap;
   align-items: center;
-  height: 10%;
+  height: 15%;
   box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
     rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
     rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
@@ -20,23 +20,22 @@
 }
 
 .header-logo-container {
-  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
 }
 
 .header-logo {
-  margin-left: 10px;
   background-image: url("./../resources/logo.png");
   background-repeat: no-repeat;
   background-size: contain;
-  width: 200px;
-  height: 75px;
-  text-align: left;
+  width: 150px;
+  height: 60px;
 }
 
 .header-title {
   font-family: "Armalite";
-  font-size: xx-large;
-  text-align: center;
   flex-grow: 1;
 }
 
@@ -44,4 +43,7 @@
   width: 200px;
   margin-right: 10px;
   text-align: right;
+}
+
+@media (min-width: 576px) {
 }

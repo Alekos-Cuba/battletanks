@@ -6,8 +6,7 @@ function Header() {
       <div className="header-logo-container">
         <div className="header-logo"></div>
       </div>
-      <h1 className="header-title">BattleTanks</h1>
-      <div className="header-links">Here goes links</div>
+      <h2 className="header-title">BattleTanks</h2>
     </div>
   );
 }

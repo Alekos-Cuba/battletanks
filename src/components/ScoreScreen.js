@@ -51,9 +51,9 @@ function ScoreScreen() {
           </div>
         </div>
         <div className="score-buttons-container">
-          <OptionButton text="Back to Menu" goto="/"></OptionButton>
+          <OptionButton text="Menu" goto="/"></OptionButton>
           <OptionButton
-            text="Play again"
+            text="Restart"
             clickFnc={restartGame}
             goto="game"
           ></OptionButton>

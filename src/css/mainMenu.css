@@ -2,7 +2,7 @@
   background-image: url("./../resources/background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  height: 80%;
+  height: calc(100vh - 30%);
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
