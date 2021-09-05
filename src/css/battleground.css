@@ -1,14 +1,11 @@
 .battleground {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 80%;
+  overflow-y: auto;
+  height: calc(100vh - 30%);
 }
 
 .bg-board-container {
   display: flex;
   flex-direction: row;
-  flex-grow: 1;
 }
 
 .bg-board {
@@ -17,11 +14,9 @@
   background-size: cover;
   display: flex;
   flex-direction: row;
-  flex-grow: 1;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: 250px;
 }
 
 .bg-board-tiles-container {
@@ -36,7 +31,16 @@
 }
 
 .bg-bottom-options {
-  position: relative;
-  bottom: 0px;
-  height: 50px;
+  box-shadow: rgb(0 0 0 / 30%) 0px 1px 3px 0px,
+    inset rgb(27 31 35 / 15%) -5px 5px 6px 8px;
+  position: absolute;
+  bottom: calc(100vh - 85%);
+  height: 45px;
+  width: 100%;
+}
+
+@media (min-height: 400px) {
+  .bg-board-container {
+    height: 100%;
+  }
 }
