@@ -4,8 +4,8 @@ import Human from "./Human";
 class GameManager {
   constructor() {
     this.boardSizeX = 8;
-    this.boardSizeY = 7;
-    this.maxUnitCount = 25;
+    this.boardSizeY = 6;
+    this.maxUnitCount = 15;
     this.playerTypes = {
       None: -1,
       Human: 0,
