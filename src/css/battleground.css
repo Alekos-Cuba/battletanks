@@ -13,10 +13,11 @@
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .bg-board-tiles-container {
