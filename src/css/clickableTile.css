@@ -58,7 +58,7 @@
   margin-right: 2px;
 }
 
-@media (min-width: 992px) {
+/*@media (min-width: 992px) {
   .tile-clickable,
   .tile-unit-miss,
   .tile-unit-destroyed {
@@ -67,4 +67,4 @@
     margin-left: 5px;
     margin-right: 5px;
   }
-}
+}*/

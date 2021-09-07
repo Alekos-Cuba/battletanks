@@ -48,11 +48,11 @@
   margin-right: 2px;
 }
 
-@media (min-width: 992px) {
+/*@media (min-width: 992px) {
   .tile {
     width: 60px;
     height: 60px;
     margin-left: 5px;
     margin-right: 5px;
   }
-}
+}*/
