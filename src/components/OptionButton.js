@@ -5,9 +5,7 @@ function OptionButton(props) {
   const history = useHistory();
 
   const handleClick = () => {
-    if (props.clickFnc && props.clickFnc instanceof Function) {
-      props.clickFnc();
-    }
+    props.clickFnc?.();
     history.push(props.goto);
   };
 

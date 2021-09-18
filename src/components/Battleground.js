@@ -15,13 +15,6 @@ function Battleground() {
   const [showScore, setShowScore] = useState(false);
   let playerTiles = new Map();
 
-  useEffect(() => {
-    gameManager.initializeGame();
-    setPlayerUnitCount(Human.units.size);
-    setAiUnitCount(AI.units.size);
-    setPlayerUnitsOnBoard();
-  }, []);
-
   const tileClicked = (unitWasHit) => {
     if (unitWasHit) {
       setAiUnitCount(AI.units.size);
@@ -90,6 +83,13 @@ function Battleground() {
     }
     return fullTiles;
   };
+
+  useEffect(() => {
+    gameManager.initializeGame();
+    setPlayerUnitCount(Human.units.size);
+    setAiUnitCount(AI.units.size);
+    setPlayerUnitsOnBoard();
+  }, []);
 
   return (
     <div className="battleground">
